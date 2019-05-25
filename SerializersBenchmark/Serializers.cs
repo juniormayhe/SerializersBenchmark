@@ -7,6 +7,7 @@
     using AutoFixture;
 
     using BenchmarkDotNet.Attributes;
+    using BenchmarkDotNet.Order;
 
     /// <summary>
     /// ZeroFormatter not included since we must add custom attributes to DTOs
@@ -14,18 +15,20 @@
     /// Microsoft Bond and Google Protocolbuf not included since you will have annoying platform independent scripts
     /// </summary>
     [RankColumn]
-    [MemoryDiagnoser]
+    [Orderer(SummaryOrderPolicy.FastestToSlowest, MethodOrderPolicy.Declared)]
+    //[MemoryDiagnoser]
     public class Serializers
     {
-        private IEnumerable<Merchant> smallList;
-        private IEnumerable<Merchant> longList;
+        private static IEnumerable<Merchant> smallList;
+        private static IEnumerable<Merchant> longList;
 
-        public Serializers()
+        [GlobalSetup]
+        public void Setup()
         {
-            smallList = this.getMerchants(100);
-            longList = this.getMerchants(1000);
+            smallList = MerchantBuilder.BuildMerchants(100);
+            longList = MerchantBuilder.BuildMerchants(5000);
         }
-        
+
         [Benchmark(Baseline = true)]
         public void Newtonsoft_Small_List()
         {
@@ -41,10 +44,10 @@
             string json = newtonsoftSerializer.Serialize(longList);
             IEnumerable<Merchant> list = newtonsoftSerializer.Deserialize(json);
         }
-        
+
         [Benchmark]
         public void NetJSON_Small_List()
-        {   
+        {
             ISerializer netJsonSerializer = new NetJSONSerializer();
             string json = netJsonSerializer.Serialize(smallList);
             IEnumerable<Merchant> list = netJsonSerializer.Deserialize(json);
@@ -72,13 +75,6 @@
             ISerializer jilSerializer = new JilSerializer();
             string json = jilSerializer.Serialize(longList);
             IEnumerable<Merchant> list = jilSerializer.Deserialize(json);
-        }
-
-        private IEnumerable<Merchant> getMerchants(int total)
-        {
-            var fixture = new Fixture();
-            var list = fixture.CreateMany<Merchant>(total);
-            return list;
         }
     }
 }

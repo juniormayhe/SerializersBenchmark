@@ -15,8 +15,8 @@
         }
 
         public string Serialize(IEnumerable<Merchant> m)
-        {
-            string s = NetJSON.Serialize(m);
+        { 
+            string s = NetJSON.Serialize(m, new NetJSONSettings { UseEnumString = false, SkipDefaultValue = false, DateFormat = NetJSONDateFormat.JsonNetISO });
             return s;
         }
     }
