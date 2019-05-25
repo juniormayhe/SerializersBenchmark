@@ -2,23 +2,25 @@
 
 ### Ever wanted to know if Newtonsoft is slower than other packages such as Jil and NetJSON?
 
+Small list with primitive and nested complex types: 100 elements
+Large list: 5000 elements
+
 ```
-BenchmarkDotNet=v0.11.4, OS=Windows 10.0.17763.379 (1809/October2018Update/Redstone5)
-Intel Core i7-3632QM CPU 2.20GHz(Ivy Bridge), 1 CPU, 8 logical and 4 physical cores
-.NET Core SDK = 3.0.100-preview3-010431
+BenchmarkDotNet=v0.11.5, OS=Windows 10.0.17763.503 (1809/October2018Update/Redstone5)
+Intel Core i7-3632QM CPU 2.20GHz (Ivy Bridge), 1 CPU, 8 logical and 4 physical cores
+.NET Core SDK=3.0.100-preview3-010431
+  [Host]     : .NET Core 2.2.3 (CoreCLR 4.6.27414.05, CoreFX 4.6.27414.05), 64bit RyuJIT  [AttachedDebugger]
+  DefaultJob : .NET Core 2.2.3 (CoreCLR 4.6.27414.05, CoreFX 4.6.27414.05), 64bit RyuJIT
 
- [Host]     : .NET Core 2.2.2 (CoreCLR 4.6.27317.07, CoreFX 4.6.27318.02), 64bit RyuJIT[AttachedDebugger]
-  DefaultJob : .NET Core 2.2.2 (CoreCLR 4.6.27317.07, CoreFX 4.6.27318.02), 64bit RyuJIT
 
-
-|                      Method |      Mean | Rank | Allocated Memory/Op |
-|---------------------------- |----------:|-----:|--------------------:|
-|              Jil_Small_List |  1.129 ms |    1 |           433.62 KB |
-|          NetJSON_Small_List |  1.291 ms |    2 |           572.04 KB |
-|       Newtonsoft_Small_List |  4.060 ms |    3 |           561.45 KB |
-|               Jil_Long_List | 11.809 ms |    4 |          4240.83 KB |
-|           NetJSON_Long_List | 13.429 ms |    5 |          5757.24 KB |
-|        Newtonsoft_Long_List | 38.671 ms |    6 |          5546.44 KB |
+|                Method |       Mean |     Error |    StdDev | Ratio | RatioSD | Rank |     Gen 0 |     Gen 1 |     Gen 2 |   Allocated |
+|---------------------- |-----------:|----------:|----------:|------:|--------:|-----:|----------:|----------:|----------:|------------:|
+|        Jil_Small_List |   1.244 ms | 0.0241 ms | 0.0330 ms |  0.30 |    0.01 |    1 |         - |         - |         - |   456.63 KB |
+|    NetJSON_Small_List |   1.537 ms | 0.0220 ms | 0.0206 ms |  0.37 |    0.01 |    2 |  197.2656 |   60.5469 |   33.2031 |    675.2 KB |
+| Newtonsoft_Small_List |   4.200 ms | 0.0601 ms | 0.0533 ms |  1.00 |    0.00 |    3 |  171.8750 |   62.5000 |   31.2500 |   606.51 KB |
+|         Jil_Long_List |  71.416 ms | 1.3603 ms | 1.2725 ms | 17.01 |    0.41 |    4 | 2000.0000 | 1000.0000 |         - | 23938.85 KB |
+|     NetJSON_Long_List |  97.853 ms | 2.3910 ms | 2.2366 ms | 23.31 |    0.69 |    5 | 5000.0000 | 1400.0000 |  400.0000 | 35490.59 KB |
+|  Newtonsoft_Long_List | 247.862 ms | 4.6033 ms | 4.3059 ms | 59.06 |    1.38 |    6 | 5000.0000 | 3000.0000 | 1000.0000 | 31087.89 KB |
 ```
 
 ### Conclusions

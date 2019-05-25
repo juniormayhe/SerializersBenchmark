@@ -16,7 +16,7 @@
     /// </summary>
     [RankColumn]
     [Orderer(SummaryOrderPolicy.FastestToSlowest, MethodOrderPolicy.Declared)]
-    //[MemoryDiagnoser]
+    [MemoryDiagnoser]
     public class Serializers
     {
         private static IEnumerable<Merchant> smallList;
