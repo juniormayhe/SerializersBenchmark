@@ -1,6 +1,8 @@
 # SerializersBenchmark
 
-### Ever wanted to know if Newtonsoft is slower than other packages such as Jil and NetJSON?
+### Ever wanted to know if Newtonsoft is slower than other packages such as Jil, NetJSON and ServiceStack?
+
+![](https://media.giphy.com/media/MJGxL8fxrQBfq/giphy.gif)
 
 Small list with primitive and nested complex types: 100 elements
 Large list: 5000 elements
@@ -40,6 +42,7 @@ Intel Core i7-3632QM CPU 2.20GHz (Ivy Bridge), 1 CPU, 8 logical and 4 physical c
 - If you do not care of processing time, you can still use Newtonsoft. It is said that to improve its performance you must create custom mapping, which may represent too many extra lines of code in your solution
 - Using NetJSON and ServiceStack with their native serialization settings seems faster than tweaking their configurations.
 - NetJSON eats more RAM for long list (5000 elements), followed by ServiceStack and Newtonsoft. Jil uses less RAM!
+- For small or large lists, Newtonsoft :snail: and ServiceStack :turtle: are slowest ones. Our question has been answered!
 
 ### How about others serializers?
 
