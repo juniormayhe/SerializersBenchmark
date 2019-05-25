@@ -1,5 +1,6 @@
 ﻿namespace SerializersBenchmark
 {
+    using Application.DTOs;
     using BenchmarkDotNet.Running;
     using System;
     using System.Collections.Generic;
@@ -25,13 +26,16 @@
             IEnumerable<MerchantDTO> merchants = MerchantBuilder.BuildMerchants(2);
 
             // Mind that serialized strings will be different due to differences among frameworks
-            ISerializer newtonsoft = new NewtonsoftSerializer();
+            ISerializer<IEnumerable<Merchant>> newtonsoft = new NewtonsoftSerializer<IEnumerable<Merchant>>();
             string jsonNewtonsoft = newtonsoft.Serialize(merchants);
 
-            ISerializer netjson = new NetJSONSerializer();
+            ISerializer<IEnumerable<Merchant>> ss = new ServiceStackSerializer<IEnumerable<Merchant>>();
+            string jsonSS = ss.Serialize(merchants);
+
+            ISerializer<IEnumerable<Merchant>> netjson = new NetJSONSerializer<IEnumerable<Merchant>>();
             string jsonNetjson = netjson.Serialize(merchants);
 
-            ISerializer jil = new JilSerializer();
+            ISerializer<IEnumerable<Merchant>> jil = new JilSerializer<IEnumerable<Merchant>>();
             string jsonJil = jil.Serialize(merchants);
         }
     }

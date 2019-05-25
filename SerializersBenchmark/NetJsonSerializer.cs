@@ -1,22 +1,24 @@
 ﻿namespace SerializersBenchmark
 {
-    using System.Collections.Generic;
-
-    using Application.DTOs;
-
     using NetJSON;
 
-    public class NetJSONSerializer : ISerializer
+    public class NetJSONSerializer<T> : ISerializer<T>
     {
-        public IEnumerable<Merchant> Deserialize(string s)
+        public T Deserialize(string s)
         {
-            IEnumerable<Merchant> merchant = NetJSON.Deserialize<IEnumerable<Merchant>>(s);
+            T merchant = NetJSON.Deserialize<T>(s);
             return merchant;
         }
 
-        public string Serialize(IEnumerable<Merchant> m)
+        public string Serialize(T m)
         { 
             string s = NetJSON.Serialize(m, new NetJSONSettings { UseEnumString = false, SkipDefaultValue = false, DateFormat = NetJSONDateFormat.JsonNetISO });
+            return s;
+        }
+
+        public string SerializeNative(T m)
+        {
+            string s = NetJSON.Serialize(m);
             return s;
         }
     }

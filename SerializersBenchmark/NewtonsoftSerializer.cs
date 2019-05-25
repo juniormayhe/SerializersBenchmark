@@ -6,7 +6,7 @@
 
     using Newtonsoft.Json;
 
-    public class NewtonsoftSerializer : ISerializer
+    public class NewtonsoftSerializer<T> : ISerializer<T>
     {
         public IEnumerable<Merchant> DeserializeWithStream(string s)
         {
@@ -32,16 +32,21 @@
             return list;
         }
 
-        public IEnumerable<Merchant> Deserialize(string s)
+        public T Deserialize(string s)
         {
-            IEnumerable<Merchant> list = JsonConvert.DeserializeObject<IEnumerable<Merchant>>(s);
+            T list = JsonConvert.DeserializeObject<T>(s);
             return list;
         }
 
-        public string Serialize(IEnumerable<Merchant> m)
+        public string Serialize(T m)
         {
             string s = JsonConvert.SerializeObject(m);
             return s;
+        }
+
+        public string SerializeNative(T m)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -4,9 +4,10 @@
 
     using Application.DTOs;
 
-    interface ISerializer
+    interface ISerializer<T>
     {
-        IEnumerable<Merchant> Deserialize(string s);
-        string Serialize(IEnumerable<Merchant> m);
+        T Deserialize(string s);
+        string Serialize(T m);
+        string SerializeNative(T m);
     }
 }

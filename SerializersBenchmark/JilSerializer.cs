@@ -1,30 +1,32 @@
 ﻿namespace SerializersBenchmark
 {
-    using System.Collections.Generic;
-    using System.IO;
-
-    using Application.DTOs;
-
     using Jil;
 
-    public class JilSerializer : ISerializer
+    using System.IO;
+
+    public class JilSerializer<T> : ISerializer<T>
     {
-        public IEnumerable<Merchant> Deserialize(string s)
+        public T Deserialize(string s)
         {
-            IEnumerable<Merchant> list;
+            T list;
 
             using (var input = new StringReader(s))
             {
-                list = JSON.Deserialize<IEnumerable<Merchant>>(input);
+                list = JSON.Deserialize<T>(input);
             }
 
             return list;
         }
 
-        public string Serialize(IEnumerable<Merchant> m)
+        public string Serialize(T m)
         {
             string s = JSON.Serialize(m);
             return s;
+        }
+
+        public string SerializeNative(T m)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

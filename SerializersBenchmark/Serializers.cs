@@ -32,7 +32,7 @@
         [Benchmark(Baseline = true)]
         public void Newtonsoft_Small_List()
         {
-            ISerializer newtonsoftSerializer = new NewtonsoftSerializer();
+            ISerializer<IEnumerable<Merchant>> newtonsoftSerializer = new NewtonsoftSerializer<IEnumerable<Merchant>>();
             string json = newtonsoftSerializer.Serialize(smallList);
             IEnumerable<Merchant> list = newtonsoftSerializer.Deserialize(json);
         }
@@ -40,7 +40,7 @@
         [Benchmark]
         public void Newtonsoft_Long_List()
         {
-            ISerializer newtonsoftSerializer = new NewtonsoftSerializer();
+            ISerializer<IEnumerable<Merchant>> newtonsoftSerializer = new NewtonsoftSerializer<IEnumerable<Merchant>>();
             string json = newtonsoftSerializer.Serialize(longList);
             IEnumerable<Merchant> list = newtonsoftSerializer.Deserialize(json);
         }
@@ -48,7 +48,7 @@
         [Benchmark]
         public void NetJSON_Small_List()
         {
-            ISerializer netJsonSerializer = new NetJSONSerializer();
+            ISerializer<IEnumerable<Merchant>> netJsonSerializer = new NetJSONSerializer<IEnumerable<Merchant>>();
             string json = netJsonSerializer.Serialize(smallList);
             IEnumerable<Merchant> list = netJsonSerializer.Deserialize(json);
         }
@@ -56,15 +56,31 @@
         [Benchmark]
         public void NetJSON_Long_List()
         {
-            ISerializer netJsonSerializer = new NetJSONSerializer();
+            ISerializer<IEnumerable<Merchant>> netJsonSerializer = new NetJSONSerializer<IEnumerable<Merchant>>();
             string json = netJsonSerializer.Serialize(longList);
+            IEnumerable<Merchant> list = netJsonSerializer.Deserialize(json);
+        }
+
+        [Benchmark]
+        public void NetJSONNative_Small_List()
+        {
+            ISerializer<IEnumerable<Merchant>> netJsonSerializer = new NetJSONSerializer<IEnumerable<Merchant>>();
+            string json = netJsonSerializer.SerializeNative(smallList);
+            IEnumerable<Merchant> list = netJsonSerializer.Deserialize(json);
+        }
+
+        [Benchmark]
+        public void NetJSONNative_Long_List()
+        {
+            ISerializer<IEnumerable<Merchant>> netJsonSerializer = new NetJSONSerializer<IEnumerable<Merchant>>();
+            string json = netJsonSerializer.SerializeNative(longList);
             IEnumerable<Merchant> list = netJsonSerializer.Deserialize(json);
         }
 
         [Benchmark]
         public void Jil_Small_List()
         {
-            ISerializer jilSerializer = new JilSerializer();
+            ISerializer<IEnumerable<Merchant>> jilSerializer = new JilSerializer<IEnumerable<Merchant>>();
             string json = jilSerializer.Serialize(smallList);
             IEnumerable<Merchant> list = jilSerializer.Deserialize(json);
         }
@@ -72,9 +88,41 @@
         [Benchmark]
         public void Jil_Long_List()
         {
-            ISerializer jilSerializer = new JilSerializer();
+            ISerializer<IEnumerable<Merchant>> jilSerializer = new JilSerializer<IEnumerable<Merchant>>();
             string json = jilSerializer.Serialize(longList);
             IEnumerable<Merchant> list = jilSerializer.Deserialize(json);
+        }
+
+        [Benchmark]
+        public void ServiceStack_Small_List()
+        {
+            ISerializer<IEnumerable<Merchant>> ssSerializer = new ServiceStackSerializer<IEnumerable<Merchant>>();
+            string json = ssSerializer.Serialize(smallList);
+            IEnumerable<Merchant> list = ssSerializer.Deserialize(json);
+        }
+
+        [Benchmark]
+        public void ServiceStack_Long_List()
+        {
+            ISerializer<IEnumerable<Merchant>> ssSerializer = new ServiceStackSerializer<IEnumerable<Merchant>>();
+            string json = ssSerializer.Serialize(longList);
+            IEnumerable<Merchant> list = ssSerializer.Deserialize(json);
+        }
+
+        [Benchmark]
+        public void ServiceStackNative_Small_List()
+        {
+            ISerializer<IEnumerable<Merchant>> ssSerializer = new ServiceStackSerializer<IEnumerable<Merchant>>();
+            string json = ssSerializer.SerializeNative(smallList);
+            IEnumerable<Merchant> list = ssSerializer.Deserialize(json);
+        }
+
+        [Benchmark]
+        public void ServiceStackNative_Long_List()
+        {
+            ISerializer<IEnumerable<Merchant>> ssSerializer = new ServiceStackSerializer<IEnumerable<Merchant>>();
+            string json = ssSerializer.SerializeNative(longList);
+            IEnumerable<Merchant> list = ssSerializer.Deserialize(json);
         }
     }
 }
