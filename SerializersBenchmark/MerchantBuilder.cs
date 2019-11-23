@@ -16,6 +16,7 @@
             foreach (var item in list)
             {
                 item.PreferredCurrencyId = null;
+                item.HasOwnStock = null;
             }
             return list;
         }
