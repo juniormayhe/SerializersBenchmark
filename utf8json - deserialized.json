@@ -1,0 +1,108 @@
+[
+  {
+    "RequestId": "8d9889f3-0f2a-499a-923d-f8d196eb9d55",
+    "MerchantId": 15,
+    "CityId": 26,
+    "CountryId": 231,
+    "Active": true,
+    "HasOwnStock": null,
+    "PreferredCurrencyId": null,
+    "Locations": [
+      {
+        "LocationId": 252,
+        "LocationName": "LocationNameca038592-81e7-438b-88cf-e6a4260e9091"
+      },
+      {
+        "LocationId": 69,
+        "LocationName": "LocationName62d2b426-1931-4cea-a287-281ffa0e76e4"
+      },
+      {
+        "LocationId": 210,
+        "LocationName": "LocationName1ff4c9c9-0e19-4d41-9f35-696aa9d942b4"
+      }
+    ],
+    "ShippingOptions": [
+      {
+        "ShippingOptionId": 86,
+        "DeliveryType": "OneWeek",
+        "EstimatedDelivery": {
+          "EstimatedDays": 116,
+          "MinimumDays": 250,
+          "MaximumDays": 185
+        }
+      },
+      {
+        "ShippingOptionId": 191,
+        "DeliveryType": "SameDay",
+        "EstimatedDelivery": {
+          "EstimatedDays": 90,
+          "MinimumDays": 172,
+          "MaximumDays": 10
+        }
+      },
+      {
+        "ShippingOptionId": 68,
+        "DeliveryType": "Premium",
+        "EstimatedDelivery": {
+          "EstimatedDays": 107,
+          "MinimumDays": 167,
+          "MaximumDays": 227
+        }
+      }
+    ],
+    "Created": "2019-04-02T20:10:19.7392566"
+  },
+  {
+    "RequestId": "c4eafb00-435d-47d4-8f69-6a61e0c068b4",
+    "MerchantId": 246,
+    "CityId": 186,
+    "CountryId": 101,
+    "Active": true,
+    "HasOwnStock": null,
+    "PreferredCurrencyId": null,
+    "Locations": [
+      {
+        "LocationId": 152,
+        "LocationName": "LocationNameadbb0ef2-a382-4910-89c6-2c56852c0a3b"
+      },
+      {
+        "LocationId": 112,
+        "LocationName": "LocationName62be13fb-62e9-4cbc-b4e3-5821fcd3029c"
+      },
+      {
+        "LocationId": 118,
+        "LocationName": "LocationName0e3502d6-5f77-4229-9be3-fa63bb89dc56"
+      }
+    ],
+    "ShippingOptions": [
+      {
+        "ShippingOptionId": 220,
+        "DeliveryType": "OneWeek",
+        "EstimatedDelivery": {
+          "EstimatedDays": 183,
+          "MinimumDays": 19,
+          "MaximumDays": 54
+        }
+      },
+      {
+        "ShippingOptionId": 141,
+        "DeliveryType": "SameDay",
+        "EstimatedDelivery": {
+          "EstimatedDays": 140,
+          "MinimumDays": 92,
+          "MaximumDays": 206
+        }
+      },
+      {
+        "ShippingOptionId": 216,
+        "DeliveryType": "Premium",
+        "EstimatedDelivery": {
+          "EstimatedDays": 253,
+          "MinimumDays": 151,
+          "MaximumDays": 187
+        }
+      }
+    ],
+    "Created": "2020-03-07T13:04:39.9682668"
+  }
+]
