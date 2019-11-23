@@ -44,8 +44,8 @@ Intel Core i7-3632QM CPU 2.20GHz (Ivy Bridge), 1 CPU, 8 logical and 4 physical c
 Here the outputs produced by serializer methods of each framework. Some serializers might render different serialized strings.
 
 | field name | datatype | value | newtonsoft | jil | netjson | service stack | utf8json |
-|--|--|--|--|--|--|--|--|--|--|--|
-|MerchantId| int | 145 | 145 | 145 | 145 | 145 | 145 |
+|---|---|---|---|---|---|---|---|
+| MerchantId | int | 145 | 145 | 145 | 145 | 145 | 145 |
 |DeliveryType| enum | OneWeek = 0 | 0 | OneWeek| 0| 0 | OneWeek |
 |RequestId| Guid | 98cced3c-5e67-48e3-875f-7ab4ad246655 | 98cced3c-5e67-48e3-875f-7ab4ad246655 | 98cced3c-5e67-48e3-875f-7ab4ad246655| 98cced3c-5e67-48e3-875f-7ab4ad246655| 98cced3c5e6748e3875f7ab4ad246655 | 98cced3c-5e67-48e3-875f-7ab4ad246655 |
 |Created| DateTime | 2018-08-07T05:13:28.1340152 | /Date(1533615208134)/ | 2018-08-07T05:13:28.1340152| 2018-08-07T05:13:28.1340152| 2018-08-07T05:13:28.1340152 | 2018-08-07T05:13:28.1340152 |
