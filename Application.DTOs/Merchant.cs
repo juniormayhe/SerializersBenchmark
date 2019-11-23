@@ -11,6 +11,7 @@ namespace Application.DTOs
         public int CityId { get; set; }
         public int CountryId { get; set; }
         public bool Active { get; set; }
+        public bool? HasOwnStock { get; set; }
         public int? PreferredCurrencyId { get; set; }
         public IEnumerable<Location> Locations { get; set; }
         public IEnumerable<ShippingOption> ShippingOptions { get; set; }
