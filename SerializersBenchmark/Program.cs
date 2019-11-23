@@ -37,6 +37,9 @@
 
             ISerializer<IEnumerable<Merchant>> jil = new JilSerializer<IEnumerable<Merchant>>();
             string jsonJil = jil.Serialize(merchants);
+
+            ISerializer<IEnumerable<Merchant>> utf8 = new Utf8JsonSerializer<IEnumerable<Merchant>>();
+            string jsonUtf8 = utf8.Serialize(merchants);
         }
     }
 }

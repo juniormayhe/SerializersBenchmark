@@ -94,6 +94,22 @@
         }
 
         [Benchmark]
+        public void Utf8Json_Small_List()
+        {
+            ISerializer<IEnumerable<Merchant>> jilSerializer = new Utf8JsonSerializer<IEnumerable<Merchant>>();
+            string json = jilSerializer.Serialize(smallList);
+            IEnumerable<Merchant> list = jilSerializer.Deserialize(json);
+        }
+
+        [Benchmark]
+        public void Utf8Json_Long_List()
+        {
+            ISerializer<IEnumerable<Merchant>> jilSerializer = new Utf8JsonSerializer<IEnumerable<Merchant>>();
+            string json = jilSerializer.Serialize(longList);
+            IEnumerable<Merchant> list = jilSerializer.Deserialize(json);
+        }
+
+        [Benchmark]
         public void ServiceStack_Small_List()
         {
             ISerializer<IEnumerable<Merchant>> ssSerializer = new ServiceStackSerializer<IEnumerable<Merchant>>();
